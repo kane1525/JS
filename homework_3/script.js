@@ -110,7 +110,7 @@ const Emploee = function (employee) {
 
   //////////// Решение ////////////
 
-  for (key in employee) {
+  for (const key in employee) {
     this[key] = employee[key];
   }
 
@@ -137,14 +137,14 @@ const Emploee = function (employee) {
   Object.defineProperty(this, 'fullInfo', {
     get() {
       let arr = [];
-      for (key in this) {
+      for (const key in this) {
         typeof this[key] !== 'function' && arr.push(`${key} - ${this[key]}`);
       }
       return arr.join(', ');
     },
 
     set(properties) {
-      for (property in properties) {
+      for (const property in properties) {
         if (this.hasOwnProperty(property)) {
           this[property] = properties[property];
         }
@@ -169,7 +169,7 @@ console.log(employeeObj.getFullName());
 
 let createEmployesFromArr = (arr) => {
   const emplyeeConstructArr = [];
-  for (employee of arr) {
+  for (const employee of arr) {
     const newEmployee = new Emploee(employee);
     emplyeeConstructArr.push(newEmployee);
   }
@@ -188,7 +188,7 @@ console.log(emplyeeConstructArr);
 
 const getFullNamesFromArr = (arr) => {
   const fullNames = [];
-  for (employee of arr) {
+  for (const employee of arr) {
     fullNames.push(employee.getFullName());
   }
   return fullNames;
@@ -204,7 +204,7 @@ console.log(getFullNamesFromArr(emplyeeConstructArr));
 
 const getMiddleSalary = (arr) => {
   let sumSalary = 0;
-  for (employee of arr) {
+  for (const employee of arr) {
     sumSalary += employee.salary;
   }
   return Math.round(sumSalary / arr.length);
